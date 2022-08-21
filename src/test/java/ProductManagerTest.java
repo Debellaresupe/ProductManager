@@ -31,6 +31,15 @@ public class ProductManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
+    public void shouldBeSearchBookByAuthor() {
+
+        Product[] expected = {product1, product3};
+
+        Product[] actual = manager.searchBy("Автор");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
     public void shouldBeSearchProductSmartPhone() {
 
         Product[] expected = {product2, product4};
@@ -68,6 +77,28 @@ public class ProductManagerTest {
         Assertions.assertEquals(expected, actual);
     }
     @Test
+    public void shouldBeNewAuthorForBook() {
+        Book book1 = new Book(10, "Книга", 100, "Автор1");
+
+        book1.setAuthor("Автор2");
+
+        String expected = "Автор2" ;
+        String actual = book1.getAuthor();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldBeNewManufacturerForSmartphone() {
+        Smartphone smartphone1 = new Smartphone(100, "Смартфон", 100_000, "Производитель1");
+
+        smartphone1.setManufacturer("Производитель1");
+
+        String expected = "Производитель1" ;
+        String actual = smartphone1.getManufacturer();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
     public void shouldBeNewNameForBook() {
 
         product1.setName("Книга5");
@@ -76,6 +107,38 @@ public class ProductManagerTest {
         String actual = product1.getName();
 
         Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldFindProductsOtherType() {
+
+        Product[] expected = {product4};
+        Product[] actual = manager.searchBy("Производитель4");
+
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldFindProductForManufacturer() {
+
+        Product[] expected = {product2};
+        Product[] actual = manager.searchBy("Производитель2");
+
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldFindProductForAuthor() {
+
+        Product[] expected = {product3};
+        Product[] actual = manager.searchBy("Автор3");
+
+
+        Assertions.assertArrayEquals(expected, actual);
+
     }
 
 
