@@ -1,4 +1,7 @@
-package ru.netology.product;
+package ru.netology.manager;
+
+import ru.netology.domain.Product;
+import ru.netology.repository.ProductRepository;
 
 import java.util.Arrays;
 
